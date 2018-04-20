@@ -182,7 +182,7 @@ var rsTableBuilder = {
     }
     $table += '</table>';
     // add any needed css overrides
-    var inlineTableStyling = '\n      <style type="text/css">\n        table#rs-table-' + id + ' tbody tr td {\n          width: 1%;\n        }\n        @media screen and (max-width: 767px) {\n          table#rs-table-' + id + ' tbody tr td {\n            width: 100%;\n          }  \n        }\n        table#rs-table-' + id + ' .productTable-featureItem {\n          vertical-align: middle;\n        }\n        table#rs-table-' + id + ' .productTable-feature p {\n          margin: 0;\n        }\n      </style>\n    ';
+    var inlineTableStyling = '\n      <style type="text/css">\n        table#rs-table-' + id + ' tbody tr td {\n          width: 1%;\n        }\n        @media screen and (max-width: 767px) {\n          table#rs-table-' + id + ' tbody tr td {\n            width: 100%;\n          }\n        }\n        table#rs-table-' + id + ' .productTable-featureItem {\n          vertical-align: middle;\n        }\n        table#rs-table-' + id + ' .productTable-feature p {\n          margin: 0;\n        }\n      </style>\n    ';
     var init$Plugin = '\n    <script type="text/javascript">\n      $(\'table#rs-table-' + id + '\').responsiveTable();\n    </script>';
     if (!$editor) {
       this.output = '' + inlineTableStyling + $table + init$Plugin;
@@ -217,7 +217,8 @@ var rsTableBuilder = {
         var $text = $(this).find('span');
         if ($text.length && $text.attr('data-inline-text')) {
           var toolbar = [['bold', 'italic', 'underline'], [{ list: 'ordered' }, { list: 'bullet' }], [{ script: 'sub' }, { script: 'super' }], [{ align: [] }]];
-          var quill = new Quill($text.get(0), { // eslint-disable-line
+          var quill = new Quill($text.get(0), {
+            // eslint-disable-line
             modules: { toolbar: toolbar },
             theme: 'bubble'
           });
