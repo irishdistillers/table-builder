@@ -14,14 +14,14 @@ body {
 
 .save-table-name {
   background-color: rgba(255, 255, 255, 0.8);
-  border:0;
+  border: 0;
   padding: 5px;
   width: 40%;
-  
+
   &:focus {
     background-color: rgba(255, 255, 255, 1);
     outline: 0;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
   }
 }
 
@@ -31,14 +31,14 @@ body {
   border-radius: 3px;
   color: white;
   padding: 8px 12px;
-  transition-duration: .2s;
-  
+  transition-duration: 0.2s;
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     text-decoration: none;
   }
-  
+
   &:focus {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -81,19 +81,19 @@ body {
   display: inline-block;
   float: right;
   padding: 7px 15px;
-  
+
   button {
     background-color: rgba(0, 0, 0, 0.2);
     border: 0;
     border-radius: 3px;
     color: white;
     padding: 3px 12px;
-    transition-duration: .2s;
-    
+    transition-duration: 0.2s;
+
     &:hover {
       background-color: rgba(0, 0, 0, 0.25);
     }
-    
+
     &:focus {
       outline: 0;
     }
@@ -177,17 +177,18 @@ body {
   overflow: hidden;
   position: relative;
   width: 100px;
-  
+  z-index: -1;
+
   #copied-textarea {
     width: 100%;
     z-index: -1;
   }
-  
+
   #hidden-files {
     width: 100%;
     z-index: -1;
   }
-  
+
   .hidden-overlay {
     background-color: white;
     height: 100%;
@@ -197,29 +198,29 @@ body {
 }
 
 .copy-output-btn {
-  background-color: rgba(0,0,0,0.08);
+  background-color: rgba(0, 0, 0, 0.08);
   border: 0;
-  color: #0678BE;
+  color: #0678be;
   float: right;
   padding: 0 20px;
-  transition-duration: .2s;
-  
+  transition-duration: 0.2s;
+
   &:after {
     content: 'Copy For Drupal';
   }
-  
+
   &:before {
     content: '\f1a9';
     font-family: 'FontAwesome';
     font-size: 15pt;
     margin-right: 5px;
   }
-  
+
   &:hover {
-    background-color: #0678BE;
+    background-color: #0678be;
     color: white;
   }
-  
+
   &:focus {
     outline: 0;
   }
@@ -228,37 +229,37 @@ body {
 .drupal-copied {
   background-color: $successGreen;
   color: white;
-  
+
   &:after {
     content: 'Copied!';
   }
-  
+
   &:before {
     content: '\f00c';
   }
-  
+
   &:hover {
     background-color: $successGreen;
   }
 }
 
 #import-table {
-  background-color: rgba(0, 0, 0, .05);
-  border: 2px dashed rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 2px dashed rgba(0, 0, 0, 0.2);
   display: inline-block;
   float: right;
   padding: 8px 40px;
   text-align: center;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
 }
 
 #import-table:before {
-  color: rgba(0, 0, 0, .5);
+  color: rgba(0, 0, 0, 0.5);
   content: 'Import Table (Drag and Drop .json file)';
 }
 
 #import-table.wrong-file-type {
-  border-color: rgba(0, 0, 0, .2);
+  border-color: rgba(0, 0, 0, 0.2);
   background-color: rgba(249, 116, 116, 1);
 }
 
@@ -267,7 +268,7 @@ body {
 }
 
 #import-table.correct-file-type {
-  border-color: rgba(0, 0, 0, .2);
+  border-color: rgba(0, 0, 0, 0.2);
   background-color: $successGreen;
 }
 
@@ -276,7 +277,7 @@ body {
 }
 
 #import-table.hover-file {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 15px 50px;
 }
 
@@ -297,11 +298,11 @@ body {
 }
 
 #table-output {
-  .productTable-row [contenteditable=true]:focus {
+  .productTable-row [contenteditable='true']:focus {
     background-color: rgba(0, 0, 0, 0.12);
     border: 0;
     outline: 0;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
   }
   .productTable-row th:hover .remove-col {
     display: inline-block;
@@ -310,11 +311,11 @@ body {
     display: inline-block;
   }
   .productTable-row:hover td {
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, 0.05);
   }
 }
 
-span[data-inline-text="true"] {
+span[data-inline-text='true'] {
   display: block;
 }
 
@@ -336,7 +337,7 @@ span[data-inline-text="true"] {
 }
 
 .remove-col:focus {
-  border:0;
+  border: 0;
   outline: 0;
 }
 
@@ -360,12 +361,12 @@ span[data-inline-text="true"] {
 }
 
 .remove-row:focus {
-  border:0;
+  border: 0;
   outline: 0;
 }
 
 .hover-col {
-  background-color: rgba(0, 0, 0, .05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .drop-hint {
