@@ -13,28 +13,31 @@
     <link href="zoolander/css/main.css" rel="stylesheet">
     <link href="https://cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/modules/introjs.min.css">
+    <link rel="stylesheet" type="text/css" href="css/modules/introjs-rtl.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.min.css">
   </head>
   <body>
     <div class="container">
       <div class="table-generator">
-        <h4>Table Generator</h4>
+        <h4 class="table-generator-header">Table Builder</h4>
+        <a href="#" class="table-generator-tour" onclick="introJs().start();">(Take a Tour)</a>
         <script src="https://cdn.quilljs.com/1.0.0/quill.min.js"></script>
         <div class="table-generator-toolbar">
-          <div class="table-generator-addBtns">
+          <div class="table-generator-addBtns" data-step="1" data-intro='Dynamically add rows and columns with these buttons'>
             <button id="add-row">Add Row</button>
             <button id="add-col">Add Column</button>
           </div>
-          <div class="table-generator-content">
+          <div class="table-generator-content" data-step='2' data-intro="These are drag and drop buttons! You can drop them into any table data section EXCEPT headers. Note that the first button (T) is only allowed in the first column">
             <button class="tg-title-btn" draggable="true" type="title"></button>
             <button class="tg-text-btn" draggable="true" type="gen-text"></button>
             <button class="tg-check-btn" draggable="true" type="check"></button>
             <button class="tg-times-btn" draggable="true" type="times"></button>
             <button class="tg-image-btn" draggable="true" type="image"></button>
           </div>
-          <div id="import-table"></div>
+          <div id="import-table" data-step="4" data-intro="If you have a saved table .json file, you can drop it in here and it will load that table"></div>
           <div class="table-generator-save-options">
-            <button class="save-table-btn"> Output</button>
+            <button class="save-table-btn" data-step="3" data-intro="Click this to see the code needed to paste into a general. You can also save the table to your desktop here for future use"> Output</button>
             <button class="clear-table-btn"> Erase</button>
           </div>
         </div>
@@ -53,6 +56,7 @@
       <textarea id="copied-textarea" readonly></textarea>
     </div>
     <script src="js/modules/jquery.min.js"></script>
+    <script src="js/modules/intro.min.js"></script>
     <script src="zoolander/js/global.js"></script>
     <script src="js/app.min.js" charset="utf-8"></script>
   </body>

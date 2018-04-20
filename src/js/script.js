@@ -56,10 +56,17 @@ const rsTableBuilder = {
       e.preventDefault();
       let target = e.target;
       if (!target.classList.contains('droptarget')) {
-        target = $(target).closest('.droptarget').get(0);
+        target = $(target)
+          .closest('.droptarget')
+          .get(0);
       }
       // only allow featured titles to go into the first col
-      if (type === 'title' && $(target).attr('data-td-index') === '0' && target && target.classList.contains('droptarget')) {
+      if (
+        type === 'title' &&
+        $(target).attr('data-td-index') === '0' &&
+        target &&
+        target.classList.contains('droptarget')
+      ) {
         this.onDrop(target, type, $t);
       } else if (type !== 'title' && target && target.classList.contains('droptarget')) {
         this.onDrop(target, type, $t);
@@ -139,7 +146,9 @@ const rsTableBuilder = {
     if (this.config.rows.length > 0) {
       $table += '<tbody">';
 
-      const zIndexes = Array.from({ length: this.config.rows.length }).map((x, i) => i).reverse();
+      const zIndexes = Array.from({ length: this.config.rows.length })
+        .map((x, i) => i)
+        .reverse();
 
       $.each(this.config.rows, (i, r) => {
         const rowStyle = $editor ? ` style="z-index:${zIndexes[i]};"` : '';
@@ -173,7 +182,10 @@ const rsTableBuilder = {
             const attrs = $editor ? `data-tr-index="${i}" data-td-index="${x}"` : '';
             const dropCls = $editor ? ' droptarget' : '';
             // if last col in row, put remove button
-            const rmBtn = ($editor && x === r.cols.length - 1) ? `<button data-index="${i}" class="remove-row"></button>` : '';
+            const rmBtn =
+              $editor && x === r.cols.length - 1
+                ? `<button data-index="${i}" class="remove-row"></button>`
+                : '';
             $table += `<td ${attrs} class="${checkClass}${dropCls}"${style}>${content}${rmBtn}</td>`;
           });
         }
@@ -192,7 +204,7 @@ const rsTableBuilder = {
         @media screen and (max-width: 767px) {
           table#rs-table-${id} tbody tr td {
             width: 100%;
-          }  
+          }
         }
         table#rs-table-${id} .productTable-featureItem {
           vertical-align: middle;
@@ -208,9 +220,7 @@ const rsTableBuilder = {
     </script>`;
     if (!$editor) {
       this.output = `${inlineTableStyling}${$table}${init$Plugin}`;
-      this.globals.htmlString.text(
-        rsTableBuilder.output,
-      );
+      this.globals.htmlString.text(rsTableBuilder.output);
       // re render for $editor
       this.renderTable($t, true);
     }
@@ -244,7 +254,8 @@ const rsTableBuilder = {
             [{ script: 'sub' }, { script: 'super' }],
             [{ align: [] }],
           ];
-          const quill = new Quill($text.get(0), { // eslint-disable-line
+          const quill = new Quill($text.get(0), {
+            // eslint-disable-line
             modules: { toolbar },
             theme: 'bubble',
           });
@@ -261,15 +272,24 @@ const rsTableBuilder = {
         $h.find('span[contenteditable="true"]').on('focusout', (e) => {
           rsTableBuilder.updateHeader($t, $h, e.target);
         });
-        $h.hover(() => {
-          $t.find('tbody tr').each(function a() {
-            $(this).find('td').eq($h.index()).addClass('hover-col');
-          });
-        }, () => {
-          $t.find('tbody tr').each(function a() {
-            $(this).find('td').eq($h.index()).removeClass('hover-col');
-          });
-        });
+        $h.hover(
+          () => {
+            $t.find('tbody tr').each(function a() {
+              $(this)
+                .find('td')
+                .eq($h.index())
+                .addClass('hover-col');
+            });
+          },
+          () => {
+            $t.find('tbody tr').each(function a() {
+              $(this)
+                .find('td')
+                .eq($h.index())
+                .removeClass('hover-col');
+            });
+          },
+        );
       });
       // bind table plugin from zoolander
       $t.find('table.productTable').responsiveTable();
@@ -396,7 +416,12 @@ const rsTableBuilder = {
       e.preventDefault();
 
       const file = e.dataTransfer.files[0];
-      if (file.name.split('.').pop().match(/json/gi)) {
+      if (
+        file.name
+          .split('.')
+          .pop()
+          .match(/json/gi)
+      ) {
         // @TODO if json obj has certain properties and are arrays
         // then pass
         const reader = new FileReader();

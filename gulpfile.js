@@ -16,7 +16,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const reload = browserSync.reload;
 
-const copyFiles = function copyFiles(files, dest) {
+const copyFiles = function copyFiles(files) {
   const copy = (file, dest) => {
     return fse.copy(file, dest, err => {
       if (err) {
@@ -27,16 +27,30 @@ const copyFiles = function copyFiles(files, dest) {
     });
   };
   for (var i = 0; i < files.length; i++) {
-    copy(files[i], `${dest}${path.basename(files[i])}`);
+    copy(files[i].module, `${files[i].dest}${path.basename(files[i].module)}`);
   }
 }
 
 const jsNodeModulesTask = function buildIcons() {
-  const dest = './dist/js/modules/';
   const modules = [
-    'node_modules/jquery/dist/jquery.min.js',
+    {
+      module: 'node_modules/jquery/dist/jquery.min.js',
+      dest: './dist/js/modules/',
+    },
+    {
+      module: 'node_modules/intro.js/minified/intro.min.js',
+      dest: './dist/js/modules/',
+    },
+    {
+      module: 'node_modules/intro.js/minified/introjs-rtl.min.css',
+      dest: './dist/css/modules/',
+    },
+    {
+      module: 'node_modules/intro.js/minified/introjs.min.css',
+      dest: './dist/css/modules/',
+    },
   ];
-  copyFiles(modules, dest);
+  copyFiles(modules);
 };
 
 const sassTask = function buildSass() {

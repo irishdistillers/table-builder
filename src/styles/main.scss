@@ -1,8 +1,18 @@
 // variables
 $successGreen: rgba(59, 206, 24, 1);
+$baseColor: #b28aff;
 // only have table styling here
 body {
   padding-top: 50px;
+}
+
+.table-generator-header {
+  display: inline-block;
+}
+
+.table-generator-tour {
+  color: $baseColor;
+  font-size: 10pt;
 }
 
 .save-table-area {
@@ -60,7 +70,7 @@ body {
 }
 
 .table-generator-toolbar {
-  background-color: #b28aff;
+  background-color: $baseColor;
   margin-bottom: 10px;
   padding: 10px;
 }
@@ -379,4 +389,8 @@ span[data-inline-text='true'] {
 
 .ql-editor {
   padding: 0;
+}
+
+.introjs-tooltiptext {
+  font-size: 9pt;
 }
